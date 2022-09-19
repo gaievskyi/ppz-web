@@ -1,0 +1,16 @@
+{
+  "module": "ESNext",
+    "target": "ESNext",
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ESNext"
+    ],
+    "strict": false,
+    "allowJs": true,
+    "checkJs": true,
+    "compilerOptions": {
+        "baseUrl": "./src",
+        "checkJs": true
+    }
+}
