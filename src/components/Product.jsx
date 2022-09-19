@@ -1,12 +1,5 @@
 /* eslint-disable camelcase */
-import {
-  Stack,
-  Text,
-  Image,
-  Center,
-  Heading,
-  ButtonGroup
-} from '@chakra-ui/react'
+import { Stack, Text, Image, Center, Heading } from '@chakra-ui/react'
 import { Modal } from './Modal'
 
 export const Product = ({
@@ -22,7 +15,6 @@ export const Product = ({
       margin: '0 auto',
       w: '100%',
       h: '100%',
-      maxW: '500px',
       minH: '500px',
       justifyContent: 'space-between',
       alignItems: 'center',
@@ -44,27 +36,25 @@ export const Product = ({
       }}
     >
       <Stack sx={{ mb: 10 }}>
-        <Image boxSize="350px" objectFit="cover" src={image} alt="Apple car" />
+        <Image boxSize="400px" objectFit="cover" src={image} alt="Apple car" />
       </Stack>
       <Heading fontSize="lg">{title}</Heading>
       <Text
         fontSize="xs"
         sx={{
-          maxH: '30px'
+          h: '30px',
+          p: 2.5
         }}
       >
         {description}
       </Text>
       <Stack sx={{ m: 5 }}>
-        <ButtonGroup>
-          <Modal label="Rent" />
-          <Modal label="Details" />
-        </ButtonGroup>
         <Center sx={{ flexDirection: 'column' }}>
           <Text fontSize="xl">${unit_price} / hour</Text>
-          <Text fontSize="md" color="tomato" as="s">
+          <Text fontSize="md" color="tomato" as="s" sx={{ mb: 3 }}>
             ${unit_price + 100}
           </Text>
+          <Modal label="Rent" />
         </Center>
       </Stack>
     </Center>

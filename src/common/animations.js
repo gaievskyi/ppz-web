@@ -6,11 +6,11 @@ export const onPresent = {
 export const onImagePresent = {
   visible: {
     opacity: 1,
-    scale: 1.1,
+    scale: 1,
     transition: { duration: 0.7, delay: 0.1 }
   },
   hidden: {
     opacity: 0,
-    scale: 1
+    scale: 0.9
   }
 }

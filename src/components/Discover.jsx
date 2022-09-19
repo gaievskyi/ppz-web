@@ -9,33 +9,60 @@ export const Discover = () => (
       p: '100px'
     }}
   >
-    <Heading>Discover our products</Heading>
-    <Stack
+    <Heading sx={{ fontWeight: '200' }}>Discover our products</Heading>
+
+    <Link
+      as={RouterLink}
+      to={routes.products.path}
+      style={{ textDecoration: 'none', width: '100%', height: '100%' }}
       sx={{
         p: 10,
         pl: 5,
         transition: '0.5s ease-out all',
+        color: 'white',
+        background: 'black',
+        position: 'relative',
+
+        '&:before': {
+          content: '""',
+          position: 'absolute',
+          width: '0',
+          height: '0',
+          top: '-5px',
+          left: '-5px',
+          borderTop: '0 solid black',
+          borderLeft: '0 solid black',
+          transition: 'all 0.3s'
+        },
+
+        '&:after': {
+          content: '""',
+          position: 'absolute',
+          width: '0',
+          height: '0',
+          bottom: '-5px',
+          right: '-5px',
+          borderBottom: '0 solid black',
+          borderRight: '0 solid black',
+          transition: 'all 0.6s'
+        },
+
+        '&:hover:before, &:hover:after': {
+          width: '130%',
+          height: '150%',
+          border: '1px solid #f0f0f0'
+        },
 
         '&:hover': {
-          color: 'white',
-          background: 'black',
-          boxShadow: `-2px -2px 6px rgba(255, 255, 255, .6),
-              -2px -2px 4px rgba(255, 255, 255, .4),
-              2px 2px 2px rgba(255, 255, 255, .05),
-              2px 2px 4px rgba(0, 0, 0, .1);`
+          color: 'black',
+          background: 'white'
         }
       }}
     >
-      <Link
-        as={RouterLink}
-        to={routes.products.path}
-        style={{ textDecoration: 'none', width: '100%', height: '100%' }}
-      >
-        <Stack direction="row" alignItems="center">
-          <ArrowRightCircle />
-          <Text>Go to products</Text>
-        </Stack>
-      </Link>
-    </Stack>
+      <Stack direction="row" alignItems="center">
+        <ArrowRightCircle />
+        <Text>Go to products</Text>
+      </Stack>
+    </Link>
   </Stack>
 )

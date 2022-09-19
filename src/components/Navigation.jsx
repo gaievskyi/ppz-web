@@ -1,16 +1,6 @@
-import { Search, Person, Bag, Translate } from 'react-bootstrap-icons'
-import {
-  Container,
-  Stack,
-  Button,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-  Link
-} from '@chakra-ui/react'
-import { Link as RouterLink, useLocation } from 'react-router-dom'
-import { ReactCountryFlag } from 'react-country-flag'
+import { Search, Person, Bag } from 'react-bootstrap-icons'
+import { Container, Stack, Button, Link } from '@chakra-ui/react'
+import { useLocation, Link as RouterLink } from 'react-router-dom'
 import { routes } from '../common'
 
 export const Navigation = () => {
@@ -29,13 +19,13 @@ export const Navigation = () => {
       }}
     >
       <Stack direction="row">
-        <Button variant="outline">
+        <Button variant="unstyled">
           <Search />
         </Button>
-        <Button variant="outline">
+        <Button variant="unstyled">
           <Person />
         </Button>
-        <Button variant="outline">
+        <Button variant="unstyled">
           <Bag />
         </Button>
       </Stack>
@@ -43,38 +33,25 @@ export const Navigation = () => {
         <Link
           as={RouterLink}
           to="/"
-          sx={pathname === routes.home.path ? { color: 'red' } : {}}
+          sx={pathname === routes.home.path ? { color: 'red.300' } : {}}
         >
           Home
         </Link>
         <Link
           as={RouterLink}
           to="/products"
-          sx={pathname === routes.products.path ? { color: 'red' } : {}}
+          sx={pathname === routes.products.path ? { color: 'red.300' } : {}}
         >
           Products
         </Link>
         <Link
           as={RouterLink}
           to="/contact"
-          sx={pathname === routes.contact.path ? { color: 'red' } : {}}
+          sx={pathname === routes.contact.path ? { color: 'red.300' } : {}}
         >
           Contact
         </Link>
       </Stack>
-      <Menu sx>
-        <MenuButton as={Button} rightIcon={<Translate />}>
-          EN
-        </MenuButton>
-        <MenuList>
-          <MenuItem>
-            <ReactCountryFlag countryCode="US" />
-          </MenuItem>
-          <MenuItem>
-            <ReactCountryFlag countryCode="PL" />
-          </MenuItem>
-        </MenuList>
-      </Menu>
     </Container>
   )
 }

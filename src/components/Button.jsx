@@ -15,6 +15,7 @@ export const Button = ({ to, children, sx, onClick }) => (
       transition: 'all .5s ease',
       p: 5,
       border: '1px solid black',
+      borderRadius: 0,
       background: 'white',
       boxShadow: `10px 10px 40px #bebebe,
              -10px -10px 40px #ffffff;`,

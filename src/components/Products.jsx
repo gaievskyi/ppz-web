@@ -6,11 +6,10 @@ import {
   List,
   ListItem,
   Spinner,
-  Container
+  Container,
+  Text
 } from '@chakra-ui/react'
 import { useQuery } from '@tanstack/react-query'
-
-import { motion } from 'framer-motion'
 
 import { Product } from './Product'
 import { useEffect } from 'react'
@@ -34,14 +33,14 @@ export const Products = () => {
   }, [])
 
   const mock = [
-    {
-      id: 3,
-      title: 'Porsche',
-      description: 'Car 1 description',
-      unit_price: 300,
-      image:
-        'https://cdn.pixabay.com/photo/2018/01/11/17/32/porsche-911-gt2rs-3076518_1280.jpg'
-    },
+    // {
+    //   id: 3,
+    //   title: 'Porsche',
+    //   description: 'Car 1 description',
+    //   unit_price: 300,
+    //   image:
+    //     'https://cdn.pixabay.com/photo/2018/01/11/17/32/porsche-911-gt2rs-3076518_1280.jpg'
+    // },
     {
       id: 4,
       title: 'Toyota',
@@ -71,35 +70,35 @@ export const Products = () => {
   return (
     <Container maxW={1280}>
       <Heading sx={{ paddingBottom: '50px' }}>Car gallery</Heading>
-      <motion.div
-        initial={{ opacity: 0, y: 500 }}
-        animate={{ opacity: 1, y: 0, transition: { duration: 1 } }}
+      <List
+        as={Center}
+        gap={5}
+        sx={{
+          flexWrap: 'wrap'
+        }}
       >
-        <List
-          as={Center}
-          gap={5}
-          sx={{
-            flexWrap: 'wrap'
-          }}
-        >
-          {mock.map((mockProduct) => (
-            <ListItem key={mockProduct.id}>
-              <Product {...mockProduct} />
-            </ListItem>
-          ))}
-          {isLoading ? (
+        {mock.map((mockProduct) => (
+          <ListItem key={mockProduct.id}>
+            <Product {...mockProduct} />
+          </ListItem>
+        ))}
+        {isLoading ? (
+          <Center gap={5}>
             <Spinner />
-          ) : isError ? (
-            <div>No products found.</div>
-          ) : (
-            data?.map((product) => (
-              <ListItem key={product.id}>
-                <Product {...product} />
-              </ListItem>
-            ))
-          )}
-        </List>
-      </motion.div>
+          </Center>
+        ) : isError ? (
+          <Center gap={5}>
+            <Spinner />
+            <Text>Can not load data</Text>
+          </Center>
+        ) : (
+          data?.map((product) => (
+            <ListItem key={product.id}>
+              <Product {...product} />
+            </ListItem>
+          ))
+        )}
+      </List>
     </Container>
   )
 }

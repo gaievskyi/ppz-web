@@ -18,16 +18,21 @@ export const Home = () => (
       <motion.div variants={onPresent} initial="hidden" animate="visible">
         <Heading fontSize="128px">Castlery</Heading>
       </motion.div>
-      <motion.div variants={onImagePresent} initial="hidden" animate="visible">
+      <motion.div
+        variants={onImagePresent}
+        initial="hidden"
+        animate="visible"
+        style={{ zIndex: '10' }}
+      >
         <Image
           objectFit="cover"
           src="https://cdn.pixabay.com/photo/2019/10/07/16/16/porsche-4533006_1280.jpg"
           alt="Apple car"
           sx={{
-            transition: '0.75s ease all',
+            transition: '1s ease all',
 
             '&:hover': {
-              transform: 'scale(1.125)'
+              transform: 'scale(0.9)'
             }
           }}
         />
@@ -35,7 +40,6 @@ export const Home = () => (
       <motion.div variants={onPresent} initial="hidden" animate="visible">
         <Heading fontSize="128px">Take the party outside this summer.</Heading>
       </motion.div>
-
       <Discover />
     </Stack>
   </Container>
