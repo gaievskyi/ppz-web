@@ -2,7 +2,7 @@
 export const mock = [
   {
     id: 4,
-    title: 'Toyota',
+    title: 'BMW 535',
     description: 'Car 2 description',
     price: 200,
     img_url:
@@ -10,7 +10,7 @@ export const mock = [
   },
   {
     id: 5,
-    title: 'BMW',
+    title: 'BMW Z4',
     description: 'Car 2 description',
     price: 200,
     img_url:
@@ -18,7 +18,7 @@ export const mock = [
   },
   {
     id: 6,
-    title: 'Mercedes',
+    title: 'Mercedes AMG GT',
     description: 'Car 2 description',
     price: 900,
     img_url:
