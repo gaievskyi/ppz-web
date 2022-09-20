@@ -19,11 +19,9 @@ export const Navigation = () => {
         alignItems: 'center'
       }}
     >
-      <Stack direction="row">
-        <Button variant="unstyled" as={RouterLink} to={routes.cart.path}>
-          <Bag />
-        </Button>
-      </Stack>
+      <Button variant="unstyled" as={RouterLink} to={routes.cart.path}>
+        <Bag />
+      </Button>
       <Burger />
     </Container>
   )
