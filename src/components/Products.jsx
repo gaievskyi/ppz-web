@@ -1,5 +1,4 @@
-/* eslint-disable camelcase */
-import { httpClient } from '../common/httpClient'
+import { httpClient, mock } from '../common'
 import {
   Center,
   Heading,
@@ -7,14 +6,19 @@ import {
   ListItem,
   Spinner,
   Container,
-  Text
+  Text,
+  useToast
 } from '@chakra-ui/react'
 import { useQuery } from '@tanstack/react-query'
-
+import { useCart } from 'react-use-cart'
 import { Product } from './Product'
 import { useEffect } from 'react'
+import { CartSuccess } from './CartSuccess'
 
 export const Products = () => {
+  const toast = useToast()
+  const { addItem } = useCart()
+
   const { data, isLoading, isError } = useQuery(
     ['Get all products'],
     async () => {
@@ -32,40 +36,23 @@ export const Products = () => {
     window.scrollTo(0, 0)
   }, [])
 
-  const mock = [
-    // {
-    //   id: 3,
-    //   title: 'Porsche',
-    //   description: 'Car 1 description',
-    //   unit_price: 300,
-    //   image:
-    //     'https://cdn.pixabay.com/photo/2018/01/11/17/32/porsche-911-gt2rs-3076518_1280.jpg'
-    // },
-    {
-      id: 4,
-      title: 'Toyota',
-      description: 'Car 2 description',
-      unit_price: 200,
-      image:
-        'https://cdn.pixabay.com/photo/2016/11/18/12/51/automobile-1834274_1280.jpg'
-    },
-    {
-      id: 5,
-      title: 'BMW',
-      description: 'Car 2 description',
-      unit_price: 200,
-      image:
-        'https://cdn.pixabay.com/photo/2016/04/24/10/48/sports-car-1349139_1280.jpg'
-    },
-    {
-      id: 6,
-      title: 'Mercedes',
-      description: 'Car 2 description',
-      unit_price: 900,
-      image:
-        'https://cdn.pixabay.com/photo/2017/03/27/14/56/auto-2179220_1280.jpg'
+  const handleAddToCart = (item) => {
+    try {
+      addItem(item)
+      toast({
+        description: <CartSuccess title={item.title} />,
+        duration: 2000,
+        status: 'success',
+        position: 'bottom-left'
+      })
+    } catch {
+      toast({
+        title: 'Item could not be added to cart',
+        status: 'error',
+        position: 'bottom-left'
+      })
     }
-  ]
+  }
 
   return (
     <Container maxW={1280}>
@@ -79,7 +66,10 @@ export const Products = () => {
       >
         {mock.map((mockProduct) => (
           <ListItem key={mockProduct.id}>
-            <Product {...mockProduct} />
+            <Product
+              onClick={() => handleAddToCart(mockProduct)}
+              {...mockProduct}
+            />
           </ListItem>
         ))}
         {isLoading ? (
@@ -93,8 +83,18 @@ export const Products = () => {
           </Center>
         ) : (
           data?.map((product) => (
-            <ListItem key={product.id}>
-              <Product {...product} />
+            <ListItem
+              key={product.id}
+              sx={{
+                position: 'relative'
+              }}
+            >
+              <Product
+                onClick={() => {
+                  handleAddToCart(product)
+                }}
+                {...product}
+              />
             </ListItem>
           ))
         )}

@@ -9,9 +9,7 @@ export const Layout = () => {
   return (
     <>
       <Navigation />
-      <>
-        <Outlet />
-      </>
+      <Outlet />
       {pathname !== routes.contact.path && <Footer />}
     </>
   )

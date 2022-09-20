@@ -7,6 +7,10 @@ export const routes = {
     title: 'Products',
     path: '/products'
   },
+  cart: {
+    title: 'Cart',
+    path: '/cart'
+  },
   product: {
     title: 'Product',
     path: '/products/:id'

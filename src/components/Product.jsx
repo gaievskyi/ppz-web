@@ -1,10 +1,11 @@
-/* eslint-disable camelcase */
 import { Stack, Text, Image, Center, Heading } from '@chakra-ui/react'
 import { Modal } from './Modal'
+import { Button } from './Button'
+import { Cart } from 'react-bootstrap-icons'
 
 export const Product = ({
   title,
-  unit_price,
+  price,
   description,
   image = 'https://thinkapple.pl/wp-content/uploads/2021/01/hyundai-apple-car.jpg',
   onClick
@@ -50,11 +51,16 @@ export const Product = ({
       </Text>
       <Stack sx={{ m: 5 }}>
         <Center sx={{ flexDirection: 'column' }}>
-          <Text fontSize="xl">${unit_price} / hour</Text>
+          <Text fontSize="xl">${price} / hour</Text>
           <Text fontSize="md" color="tomato" as="s" sx={{ mb: 3 }}>
-            ${unit_price + 100}
+            ${price + 100}
           </Text>
-          <Modal label="Rent" />
+          <Stack direction="row">
+            <Modal label="Rent" />
+            <Button onClick={onClick}>
+              <Cart />
+            </Button>
+          </Stack>
         </Center>
       </Stack>
     </Center>

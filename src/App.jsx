@@ -2,6 +2,7 @@ import { routes } from './common'
 import {
   Home,
   Products,
+  Cart,
   Contact,
   NotFound,
   Layout,
@@ -17,6 +18,7 @@ export const App = () => (
       <Route path={routes.contact.path} element={<Contact />} />
       <Route path={routes.notFound.path} element={<NotFound />} />
     </Route>
+    <Route path={routes.cart.path} element={<Cart />} />
     <Route path="/redirect-to-author" element={<Redirect />} />
   </Routes>
 )
