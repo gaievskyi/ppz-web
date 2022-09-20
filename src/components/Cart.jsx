@@ -51,7 +51,7 @@ export const Cart = () => {
                 title={item.title}
                 price={item.price}
                 quantity={item.quantity}
-                image={item.image}
+                image={item.img_url}
               />
             ))}
             <GridItem colSpan={4}>

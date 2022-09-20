@@ -1,9 +1,10 @@
+/* eslint-disable camelcase */
 import { useCart } from 'react-use-cart'
 import { GridItem, Heading, Stack, Image, Text, Center } from '@chakra-ui/react'
 import { Button } from './Button'
 import { CartPrice } from './CartPrice'
 
-export const CartProduct = ({ id, title, price, quantity, image }) => {
+export const CartProduct = ({ id, title, price, quantity, img_url }) => {
   const { updateItemQuantity, removeItem } = useCart()
 
   return (
@@ -20,7 +21,7 @@ export const CartProduct = ({ id, title, price, quantity, image }) => {
       >
         <Stack direction="row" sx={{ alignItems: 'center' }}>
           <Image
-            src={image}
+            src={img_url}
             alt={title}
             boxSize="125px"
             objectFit="cover"

@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import { Stack, Text, Image, Center, Heading } from '@chakra-ui/react'
 import { Modal } from './Modal'
 import { Button } from './Button'
@@ -7,7 +8,7 @@ export const Product = ({
   title,
   price,
   description,
-  image = 'https://thinkapple.pl/wp-content/uploads/2021/01/hyundai-apple-car.jpg',
+  img_url = 'https://thinkapple.pl/wp-content/uploads/2021/01/hyundai-apple-car.jpg',
   onClick
 }) => (
   <Stack
@@ -37,7 +38,12 @@ export const Product = ({
       }}
     >
       <Stack sx={{ mb: 10 }}>
-        <Image boxSize="400px" objectFit="cover" src={image} alt="Apple car" />
+        <Image
+          boxSize="400px"
+          objectFit="cover"
+          src={img_url}
+          alt="Apple car"
+        />
       </Stack>
       <Heading fontSize="lg">{title}</Heading>
       <Text
